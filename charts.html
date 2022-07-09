@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/cryptologo2.jpg" type="image/x-icon" style="border-radius: 50%;">
+    <title>CryptoTracker</title>
+
+    <link rel="stylesheet" href="./css/charts.css">
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        #goback {
+            width: max-content;
+            font-size: 1.5em;
+            background: white;
+            padding: 0 10px;
+            position: sticky;
+            box-shadow: 0 0 20px 0 #28282980;
+
+        }
+
+        #goback a {
+            color: black;
+        }
+
+        .main_container {
+            min-width:80%;
+            margin: auto;
+        }
+
+
+        /* /================== Media Queries================ */
+
+        @media screen and (max-width: 380px) {
+            .main_container {
+                width: 146%;
+                flex-direction: column;
+                overflow: hidden;
+
+            }
+
+            .coin_index {
+                grid-template-columns: repeat(1, 1fr);
+                margin: 10px 0;
+            }
+
+            .mainGraph {
+                width: 100%;
+                margin: 0;
+            }
+
+            .secondbox-body {
+                width: 80vw;
+                margin-left: -10%;
+            }
+
+            .btns_container {
+                padding: 0;
+                margin: 10px 0;
+            }
+
+            .pie_Charts {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                margin: auto;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pie_box {
+                margin: auto;
+            }
+        }
+
+        @media (min-width:380px) and (max-width: 580px) {
+            .coin_index {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .secondbox-body {
+                width: 90vw;
+                margin-left: -10%;
+            }
+
+            .pie_Charts {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                margin: auto;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pie_box {
+                margin: auto;
+            }
+        }
+
+        /* For small devices TYPE_2*/
+
+        /* @media (min-width:500px) and (max-width: 580px) {} */
+
+        /* For medium devices */
+
+        @media (min-width: 580px) and (max-width:745px) {
+            .coin_index {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .pie_Charts {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                margin: auto;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pie_box {
+                margin: auto;
+            }
+        }
+
+        /* For medium devices TYPE_2*/
+
+        @media screen and (max-width:800px) {
+            .coin_index {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .main_container {
+                flex-direction: column;
+                width: 750px;
+            }
+
+            .mainGraph {
+                margin-left: .5em;
+            }
+
+            .pie_Charts {
+                margin: auto;
+            }
+        }
+
+        @media screen and (max-width: 1020px) {
+            .coin_index {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .main_container {
+                flex-direction: column;
+                width: 100vw;
+            }
+
+            .mainGraph {
+                margin-left: .3em;
+            }
+
+            .container_right {
+                transform: translateY(10px);
+                width: 100%;
+                margin: auto;
+            }
+
+            .secondbox-body {
+                width: 90%;
+                transform: translateX(50px);
+            }
+
+            .pie_Charts {
+                margin: auto;
+            }
+        }
+
+        /* For large devices */
+
+        @media screen and (min-width: 1020px) {
+            .main_container {
+                width: 80%;
+                margin: auto;
+            }
+        }
+
+        /* For tall screens on mobiles y desktop*/
+
+        @media screen and (min-height: 721px) {
+            body {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class='coin_val'>{{coin}}</div>
+    <div id='goback'><a href="./table.html"><i class='bx bx-undo'></i></a></div>
+    <div class="main_container">
+        <div class="container_left">
+            <!-- coin select -->
+
+            <div class="box">
+                <div class="coin-select" id="coin-select">
+                    <div class="coin-select-toggle" id="coin-select-toggle">
+                        <span>
+                            {{coin}}
+                        </span>
+                        <i class="bx bx-chevron-down"></i>
+                    </div>
+                    <div class="coin-select-list" id="coin-select-list">
+                        <input type="text" placeholder="Search coin name">
+                    </div>
+                </div>
+            </div>
+
+            <div class="coin_index" id="coin-index">
+                <!-- Counter  1-->
+                <div class="coin_desc">
+                    <div class="coin_box">
+                        <div class="coin_head">
+
+                        </div>
+                        <div class="count_info">
+                            <h5 class="section_value-1" id="markCap-value"></h5>
+                            <span class="section_label-1">Estimated Market <br>Capital</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Counter  2-->
+                <div class="coin_desc">
+                    <div class="coin_box">
+                        <div class="coin_head">
+
+                        </div>
+                        <div class="count_info">
+                            <h5 class="section_value-2" id="markCap_chg_Prday_percent-value"></h5>
+                            <span class="section_label-2">Market Capital <br>Change/day</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Counter  3-->
+                <div class="coin_desc">
+                    <div class="coin_box">
+                        <div class="coin_head">
+
+                        </div>
+                        <div class="count_info">
+                            <h5 class="section_value-3" id="markCap_Rank-value"></h5>
+                            <span class="section_label-3">Market Capital <br>Rank</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="btns_container">
+                <button class="btn" value="1">1D</button>
+                <button class="btn" value="7">7D</button>
+                <button class="btn" value="14">14D</button>
+                <button class="btn" value="30">1M</button>
+                <button class="btn" value="90">3M</button>
+                <button class="btn" value="180">6M</button>
+                <button class="btn" value="365">1Y</button>
+            </div>
+
+            <div class="mainGraph">
+
+            </div>
+        </div>
+
+        <div class="container_right">
+            <div class="second_box">
+                <div class="second_box-Title">Keep atleast 2-days of Gap between data</div>
+                <div class='get_period'>
+                    <div class="second_inputs">
+                        <input type="date" class="date1">
+                        <span class="-">-</span>
+                        <input type="date" class="date2">
+                    </div>
+                    <div class="second_btns">
+                        <select name="AnalysisType" id="AnalysisType">
+                            <option value="prices">Prices</option>
+                            <option value="market_caps">Market Capital</option>
+                        </select>
+                        <button class="price_btn">Set Values</button>
+                    </div>
+                </div>
+                <div class="secondbox-body">
+
+                </div>
+            </div>
+            <!-- <div class="Other">
+                <h3 class="OtherTitle">Others</h3>
+                <ul class="OtherSection">
+                    <li><span class="othertitle1">Fully Diluted Valuation :&nbsp;&nbsp; </span></li>
+                    <li><span class="OtherInfo" id="fully_diluted_valuation"></span></li>
+                    <li> <i class='bx bx-shape-circle'></i></li>
+                    <li> <span class="othertitle2">Total Volume : &nbsp;&nbsp;</span></li>
+                    <li> <span class="OtherInfo" id="total-Volume"></span></li>
+                    <li> <i class='bx bx-bar-chart-square'></i></li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+
+
+    <div class="pie_Charts" style="background:transparent;box-shadow: none;">
+        <div class="pie_box" id="pie_box-1"></div>
+        <div class="pie_box" id="pie_box-2"></div>
+    </div>
+
+
+    <!-- loader -->
+    <div class="loader" style='width: 100%;
+    height: 100%;'>
+        <img src="./images/loadingGS.gif" style='width: 200px;'>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./js/ApiManage.js"></script>
+    <script src="./js/fetchapi.js"></script>
+    <script src="./js/charts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/cryptologo2.jpg" type="image/x-icon" style="border-radius: 50%;">
+    <title>CryptoTracker</title>
+
+    <link rel="stylesheet" href="./css/table.css">
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        .popUp_container .loadingGif {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .popUp_container img{
+            width: 50px;
+            height: auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="line_container">
+        <ul class="hor_list">
+
+        </ul>
+    </div>
+
+
+
+    <div class="tooltip">
+        <div class="open_tool"><i class='bx bx-transfer-alt'></i></div>
+
+        <ul class="ul_tooltip">
+            <li class="tooltip_info">
+                <i class="bx bx-moon change-theme" id="theme-button"></i>
+                <span class="tooltip_labels">Theme</span>
+            </li>
+            <li class="tooltip_info" id="Compare">
+                <i class='bx bxs-doughnut-chart'></i>
+                <span class="tooltip_labels">Compare</span>
+            </li>
+            <li class="tooltip_info" id="News">
+                <i class='bx bxs-news'></i>
+                <span class="tooltip_labels">News</span>
+            </li>
+            <li class="tooltip_info" id="Converter">
+                <i class='bx bx-dollar-circle'></i>
+                <span class="tooltip_labels">Converter</span>
+            </li>
+            <li class="tooltip_info" id="back_home">
+                <a href="/"><i class='bx bx-undo'></i></a>
+                <span class="tooltip_labels">Home</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main_container">
+        <div class="table_container">
+            <div class="search_coin">
+                <div class="box_tab">
+                    <div class="coin-select_tab" id="coin-select_tab">
+                        <div class="coin-select-toggle_tab" id="coin-select-toggle_tab">
+                            <span>
+                                Bitcoin
+                            </span>
+                            <i class="bx bx-chevron-down"></i>
+                        </div>
+                        <div class="coin-select-list_tab" id="coin-select-list_tab">
+                            <input type="text" placeholder="Search coin name">
+                        </div>
+                    </div>
+                    <div class="reset_tab" id="reset_tab">
+                        <i class='bx bx-reset'></i>
+                    </div>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th class="name">Name</th>
+                        <th>Price</th>
+                        <th>1d%</th>
+                        <th>Market Capital</th>
+                        <th>Circulating Supply</th>
+                        <th>View Analysis</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody_data">
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <div class="popUp_container">
+        <img src="./images/loadingGS.gif" class='loadingGif'>
+        <div class="modal_close"><i class='bx bx-x'></i></div>
+        <div class="modal_container">
+
+        </div>
+
+      
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./js/ApiManage.js"></script>
+    <script src="./js/fetchapi.js"></script>
+    <script src="./js/table.js"></script>
+</body>
+
+</html>
