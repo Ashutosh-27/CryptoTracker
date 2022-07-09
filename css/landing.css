@@ -74,6 +74,13 @@
     font-size: 1.5rem;
 }
 
+#type-txt{
+    margin: 0 10px;
+   height: 30px;
+}
+#type-txt .txt::after{
+    content: "_";
+}
 
 
 
